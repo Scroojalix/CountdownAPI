@@ -1,0 +1,13 @@
+name: CountdownAPI
+main: io.github.scroojalix.countdownapi.main
+version: "1.0"
+author: Scroojalix
+api-version: "1.13"
+permission-message: &noperms "\u00A7cYou do not have permission to use this command."
+
+commands:
+  begindebugcountdown:
+    aliases: [begindebugcount]
+    description: "Start the debug countdown timer."
+    permission: countdown.begincount
+    permission-message: *noperms
