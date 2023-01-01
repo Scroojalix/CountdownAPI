@@ -13,14 +13,9 @@ public class Style {
     public Style(String titleFormat, String subtitleFormat, int fadeIn, int stay, int fadeOut) {
         this.titleFormat = titleFormat;
         this.subtitleFormat = subtitleFormat;
-
-        if (fadeIn + stay + fadeOut > 20) {
-            throw new IllegalArgumentException("fadeIn, stay and fadeOut cannot exceed 20 ticks");
-        } else {
-            this.fadeIn = fadeIn;
-            this.stay = stay;
-            this.fadeOut = fadeOut;
-        }
+        this.fadeIn = fadeIn;
+        this.stay = stay;
+        this.fadeOut = fadeOut;
     }
 
     public String getTitleRaw() {

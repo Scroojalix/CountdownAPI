@@ -11,7 +11,7 @@ public class StyleBuilder {
     }
 
     public static Style getDefaultStyle() {
-        return new Style(ChatColor.GOLD + "Countdown ends in", ChatColor.WHITE + "%{count}", 5, 10, 5);
+        return new Style(ChatColor.GOLD + "Countdown ends in", ChatColor.WHITE + "%count%", 5, 10, 5);
     }
 
     public Style create() {

@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import me.clip.placeholderapi.PlaceholderAPI;
+
 public class CountdownHandler implements Runnable {
 
     private int taskId;
@@ -25,7 +27,7 @@ public class CountdownHandler implements Runnable {
     public void tick() {
         interfacer.tick();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.sendTitle(formatCountdown(style.getTitle()), formatCountdown(style.getSubtitle()), style.fadeIn, style.stay, style.fadeOut);
+            p.sendTitle(formatCountdown(p, style.getTitle()), formatCountdown(p, style.getSubtitle()), style.fadeIn, style.stay, style.fadeOut);
         }
     }
 
@@ -54,10 +56,11 @@ public class CountdownHandler implements Runnable {
         return count;
     }
 
-    private String formatCountdown(String in) {
+    private String formatCountdown(Player reciever, String in) {
         //TODO need more elegant way of applying regex patterns
         // Could implement placeholderAPI
         String out = in.replace("%count%", getCount()+"");
+        out = PlaceholderAPI.setPlaceholders(reciever, out);
         return out;
     }
 }
