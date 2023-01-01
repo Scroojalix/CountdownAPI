@@ -14,11 +14,11 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.17</maven.compiler.source>
+    <maven.compiler.target>1.17</maven.compiler.target>
     <author>Scroojalix</author>
     <!-- Change version here -->
-    <revision>1.1</revision>
+    <revision>1.2</revision>
   </properties>
 
   <repositories>

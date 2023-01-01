@@ -42,5 +42,10 @@ public class StyleBuilder {
         style.setFadeOutLength(fadeout);
         return this;
     }
+
+    public StyleBuilder setFinalTickStyle(Style finalTickStyle) {
+        style.setFinalTickStyle(finalTickStyle);
+        return this;
+    }
     
 }

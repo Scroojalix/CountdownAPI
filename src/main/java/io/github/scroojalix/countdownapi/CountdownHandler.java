@@ -13,6 +13,7 @@ public class CountdownHandler implements Runnable {
     private Style style;
     private CountdownInterfacer interfacer;
 
+    
     public CountdownHandler(int countdownLength, CountdownInterfacer interfacer) {
         this(countdownLength, StyleBuilder.getDefaultStyle(), interfacer);
     }
@@ -22,24 +23,28 @@ public class CountdownHandler implements Runnable {
         this.style = style;
         this.interfacer = interfacer;
     }
-
+    
     /** Called each second of the countdown */
-    public void tick() {
+    void tick(Style style) {
         interfacer.tick();
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.sendTitle(formatCountdown(p, style.getTitle()), formatCountdown(p, style.getSubtitle()), style.fadeIn, style.stay, style.fadeOut);
         }
     }
-
-    public void start(Plugin plugin) {
+    
+    void start(Plugin plugin) {
         interfacer.start();
-        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, this, 0, 20);
+        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, this, 0, style.getTotalTickLength());
     }
-
+    
     @Override
     public void run() {
-        tick();
-        if (count == 0) {
+        if (count != 0) {
+            tick(style);
+        } else {
+            if (style.getFinalTickStyle() != null) {
+                tick(style.getFinalTickStyle());
+            }
             cancel();
             interfacer.callback();
         }
@@ -57,8 +62,6 @@ public class CountdownHandler implements Runnable {
     }
 
     private String formatCountdown(Player reciever, String in) {
-        //TODO need more elegant way of applying regex patterns
-        // Could implement placeholderAPI
         String out = in.replace("%count%", getCount()+"");
         out = PlaceholderAPI.setPlaceholders(reciever, out);
         return out;
