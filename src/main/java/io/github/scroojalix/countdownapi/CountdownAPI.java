@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.bukkit.plugin.Plugin;
 
-public class CountdownAPI {
+public final class CountdownAPI {
 
     static Map<Integer, CountdownHandler> runningCountdowns = new HashMap<Integer, CountdownHandler>();
     
