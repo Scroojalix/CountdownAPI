@@ -123,6 +123,9 @@
     </profile>
     <profile>
       <id>library-only</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <build>
         <finalName>CountdownAPI-LIBRARY_ONLY</finalName>
         <directory>./target/LibraryOnly</directory>
