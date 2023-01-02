@@ -32,9 +32,10 @@ public class CountdownHandler implements Runnable {
         }
     }
     
-    void start(Plugin plugin) {
-        interfacer.start();
+    int start(Plugin plugin) {
         taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, this, 0, style.getTotalTickLength());
+        CountdownAPI.runningCountdowns.put(taskId, this);
+        return taskId;
     }
     
     @Override
@@ -54,6 +55,7 @@ public class CountdownHandler implements Runnable {
     /** Call to cancel the countdown */
     public void cancel() {
         Bukkit.getScheduler().cancelTask(taskId);
+        CountdownAPI.runningCountdowns.remove(taskId);
     }
 
     /** Get current count */
@@ -62,6 +64,8 @@ public class CountdownHandler implements Runnable {
     }
 
     private String formatCountdown(Player reciever, String in) {
+        if (in == null)
+            return null;
         String out = in.replace("%count%", getCount()+"");
         out = PlaceholderAPI.setPlaceholders(reciever, out);
         return out;
