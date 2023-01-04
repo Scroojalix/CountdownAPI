@@ -21,7 +21,7 @@ public final class CountdownAPI {
     // }
 
     public static int startCountdown(Plugin plugin, int length) {
-        return startCountdown(plugin, length, StyleBuilder.getDefaultStyle(), () -> {});
+        return startCountdown(plugin, length, StyleBuilder.getDefaults().create(), () -> {});
     }
 
     public static int startCountdown(Plugin plugin, int length, Style style) {

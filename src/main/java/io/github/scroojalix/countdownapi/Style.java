@@ -10,6 +10,10 @@ public class Style {
 
     private Style finalTickStyle;
 
+    public Style() {
+        this(null, null, 0, 0, 0, 0, null);
+    }
+
     public Style(String titleFormat, String subtitleFormat, int fadeIn, int stay, int fadeOut) {
         this(titleFormat, subtitleFormat, fadeIn, stay, fadeOut, 0, null);
     }

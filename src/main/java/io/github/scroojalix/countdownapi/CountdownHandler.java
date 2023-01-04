@@ -16,7 +16,7 @@ public class CountdownHandler implements Runnable {
 
     
     public CountdownHandler(int countdownLength, CountdownInterfacer interfacer) {
-        this(countdownLength, StyleBuilder.getDefaultStyle(), interfacer);
+        this(countdownLength, StyleBuilder.getDefaults().create(), interfacer);
     }
     
     public CountdownHandler(int countdownLength, Style style, CountdownInterfacer interfacer) {

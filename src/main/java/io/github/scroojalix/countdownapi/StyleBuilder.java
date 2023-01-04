@@ -7,11 +7,15 @@ public class StyleBuilder {
     private Style style;
 
     public StyleBuilder() {
-        this.style = getDefaultStyle();
+        this.style = new Style();
     }
 
-    public static Style getDefaultStyle() {
-        return new Style(ChatColor.GOLD + "Countdown ends in", ChatColor.WHITE + "%count%", 0, 0, 0);
+    public StyleBuilder(Style style) {
+        this.style = style;
+    }
+
+    public static StyleBuilder getDefaults() {
+        return new StyleBuilder(new Style(ChatColor.GOLD + "Countdown ends in", ChatColor.WHITE + "%count%", 0, 20, 0));
     }
 
     public Style create() {
