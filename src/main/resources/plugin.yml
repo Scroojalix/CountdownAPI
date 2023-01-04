@@ -1,6 +1,6 @@
 name: CountdownAPI
-main: io.github.scroojalix.countdownapi.main
-version: "1.0"
+main: io.github.scroojalix.countdownapi.Main
+version: ${project.version}
 author: Scroojalix
 api-version: "1.13"
 permission-message: &noperms "\u00A7cYou do not have permission to use this command."
