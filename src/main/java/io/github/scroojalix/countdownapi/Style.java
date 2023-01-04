@@ -1,13 +1,16 @@
 package io.github.scroojalix.countdownapi;
 
+import org.bukkit.Sound;
+
 public class Style {
     // TODO add extra effects such as sfx, action bar, xp bar etc.
 
     private String titleFormat;
     private String subtitleFormat;
-
+    
     int fadeIn, stay, fadeOut, wait;
-
+    
+    private SoundInfo soundInfo;
     private Style finalTickStyle;
 
     public Style() {
@@ -76,11 +79,31 @@ public class Style {
         return fadeIn + stay + fadeOut;
     }
 
+    public SoundInfo getSoundInfo() {
+        return this.soundInfo;
+    }
+
+    public void setSoundInfo(Sound sound, float volume, float pitch) {
+        if (sound != null)
+            this.soundInfo = new SoundInfo(sound, volume, pitch);
+    }
+
     public Style getFinalTickStyle() {
         return this.finalTickStyle;
     }
 
     public void setFinalTickStyle(Style finalTickStyle) {
         this.finalTickStyle = finalTickStyle;
+    }
+
+    class SoundInfo {
+        public final Sound sound;
+        public final float volume, pitch;
+
+        public SoundInfo(Sound sound, float volume, float pitch) {
+            this.sound = sound;
+            this.volume = volume;
+            this.pitch = pitch;
+        }
     }
 }

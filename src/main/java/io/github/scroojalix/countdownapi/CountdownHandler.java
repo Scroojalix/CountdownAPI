@@ -31,8 +31,14 @@ public class CountdownHandler implements Runnable {
             Bukkit.getLogger().warning("A countdown with no tick length attempted to be called. Consider adjusting the countdowns fadeIn, stay and fadeOut values");
         }
         interfacer.tick();
+
+        Style.SoundInfo soundInfo = style.getSoundInfo();
+        boolean playSound = soundInfo != null;
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.sendTitle(formatCountdown(p, style.getTitleFormat()), formatCountdown(p, style.getSubtitleFormat()), style.fadeIn, style.stay, style.fadeOut);
+            
+            if (playSound)
+                p.playSound(p.getLocation(), soundInfo.sound, soundInfo.volume, soundInfo.pitch);
         }
     }
     

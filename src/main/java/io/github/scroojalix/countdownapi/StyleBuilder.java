@@ -1,6 +1,7 @@
 package io.github.scroojalix.countdownapi;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 
 public class StyleBuilder {
 
@@ -49,6 +50,11 @@ public class StyleBuilder {
 
     public StyleBuilder setWait(int wait) {
         style.setWaitLength(wait);
+        return this;
+    }
+
+    public StyleBuilder setSoundInfo(Sound sound, float volume, float pitch) {
+        style.setSoundInfo(sound, volume, pitch);
         return this;
     }
 
