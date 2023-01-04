@@ -1,6 +1,7 @@
 package io.github.scroojalix.countdownapi;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -31,7 +32,7 @@ public class CountdownHandler implements Runnable {
         }
         interfacer.tick();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.sendTitle(formatCountdown(p, style.getTitle()), formatCountdown(p, style.getSubtitle()), style.fadeIn, style.stay, style.fadeOut);
+            p.sendTitle(formatCountdown(p, style.getTitleFormat()), formatCountdown(p, style.getSubtitleFormat()), style.fadeIn, style.stay, style.fadeOut);
         }
     }
     
@@ -71,6 +72,6 @@ public class CountdownHandler implements Runnable {
             return null;
         String out = in.replace("%count%", getCount()+"");
         out = PlaceholderAPI.setPlaceholders(reciever, out);
-        return out;
+        return ChatColor.translateAlternateColorCodes('&', out);
     }
 }

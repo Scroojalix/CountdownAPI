@@ -1,7 +1,5 @@
 package io.github.scroojalix.countdownapi;
 
-import org.bukkit.ChatColor;
-
 public class Style {
     // TODO add extra effects such as sfx, action bar, xp bar etc.
 
@@ -34,28 +32,20 @@ public class Style {
         this.finalTickStyle = finalTickStyle;
     }
 
-    public String getTitleRaw() {
-        return this.titleFormat;
-    }
-
-    public String getTitle() {
-        return ChatColor.translateAlternateColorCodes('&', titleFormat);
+    public String getTitleFormat() {
+        return titleFormat;
     }
 
     public void setTitleFormat(String titleFormat) {
         this.titleFormat = titleFormat;
     }
 
-    public String getSubtitleRaw() {
-        return this.subtitleFormat;
+    public String getSubtitleFormat() {
+        return subtitleFormat;
     }
 
     public void setSubtitleFormat(String subtitleFormat) {
         this.subtitleFormat = subtitleFormat;
-    }
-
-    public String getSubtitle() {
-        return ChatColor.translateAlternateColorCodes('&', subtitleFormat);
     }
 
     public void setFadeInLength(int fadeIn) {
