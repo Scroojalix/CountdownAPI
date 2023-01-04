@@ -26,6 +26,9 @@ public class CountdownHandler implements Runnable {
     
     /** Called each second of the countdown */
     void tick(Style style) {
+        if (style.getTotalTickLength() <= 0) {
+            Bukkit.getLogger().warning("A countdown with no tick length attempted to be called. Consider adjusting the countdowns fadeIn, stay and fadeOut values");
+        }
         interfacer.tick();
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.sendTitle(formatCountdown(p, style.getTitle()), formatCountdown(p, style.getSubtitle()), style.fadeIn, style.stay, style.fadeOut);
@@ -33,7 +36,7 @@ public class CountdownHandler implements Runnable {
     }
     
     int start(Plugin plugin) {
-        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, this, 0, style.getTotalTickLength());
+        taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, this, 0, style.getTotalTickLength() + style.getWaitLength());
         CountdownAPI.runningCountdowns.put(taskId, this);
         return taskId;
     }

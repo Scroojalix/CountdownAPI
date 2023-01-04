@@ -11,7 +11,7 @@ public class StyleBuilder {
     }
 
     public static Style getDefaultStyle() {
-        return new Style(ChatColor.GOLD + "Countdown ends in", ChatColor.WHITE + "%count%", 5, 10, 5);
+        return new Style(ChatColor.GOLD + "Countdown ends in", ChatColor.WHITE + "%count%", 0, 0, 0);
     }
 
     public Style create() {
@@ -40,6 +40,11 @@ public class StyleBuilder {
     
     public StyleBuilder setFadeout(int fadeout) {
         style.setFadeOutLength(fadeout);
+        return this;
+    }
+
+    public StyleBuilder setWait(int wait) {
+        style.setWaitLength(wait);
         return this;
     }
 

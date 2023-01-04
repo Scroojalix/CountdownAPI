@@ -8,20 +8,29 @@ public class Style {
     private String titleFormat;
     private String subtitleFormat;
 
-    int fadeIn, stay, fadeOut;
+    int fadeIn, stay, fadeOut, wait;
 
     private Style finalTickStyle;
 
     public Style(String titleFormat, String subtitleFormat, int fadeIn, int stay, int fadeOut) {
-        this(titleFormat, subtitleFormat, fadeIn, stay, fadeOut, null);
+        this(titleFormat, subtitleFormat, fadeIn, stay, fadeOut, 0, null);
+    }
+
+    public Style(String titleFormat, String subtitleFormat, int fadeIn, int stay, int fadeOut, int wait) {
+        this(titleFormat, subtitleFormat, fadeIn, stay, fadeOut, 0, null);
     }
 
     public Style(String titleFormat, String subtitleFormat, int fadeIn, int stay, int fadeOut, Style finalTickStyle) {
+        this(titleFormat, subtitleFormat, fadeIn, stay, fadeOut, 0, finalTickStyle);
+    }
+
+    public Style(String titleFormat, String subtitleFormat, int fadeIn, int stay, int fadeOut, int wait, Style finalTickStyle) {
         this.titleFormat = titleFormat;
         this.subtitleFormat = subtitleFormat;
         this.fadeIn = fadeIn;
         this.stay = stay;
         this.fadeOut = fadeOut;
+        this.wait = wait;
         this.finalTickStyle = finalTickStyle;
     }
 
@@ -59,6 +68,14 @@ public class Style {
 
     public void setFadeOutLength(int fadeOut) {
         this.fadeOut = fadeOut;
+    }
+
+    public void setWaitLength(int wait) {
+        this.wait = wait;
+    }
+
+    public int getWaitLength() {
+        return this.wait;
     }
 
     public int getTotalTickLength() {
